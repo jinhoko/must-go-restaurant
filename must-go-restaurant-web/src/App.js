@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/data');
-      const parsedData = Papa.parse(response.data, { header: true }).data;
+      const parsedData = Papa.parse(response.data, { header: true, delimiter: "\t" }).data;
       const parsedColumns = Object.keys(parsedData[0]).map((key) => ({
         Header: key,
         accessor: key,

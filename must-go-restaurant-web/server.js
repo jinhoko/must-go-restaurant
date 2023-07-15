@@ -6,9 +6,11 @@ const httpProxy = require('http-proxy');
 const app = express();
 const port = 3000;
 
+const url = 'https://raw.githubusercontent.com/jinhoko/must-go-restaurant/master/data/pohang.tsv';
+
 app.get('/data', async (req, res) => {
   try {
-    const response = await axios.get('https://gist.githubusercontent.com/RobVanGroenewoud/ba89ad7684df8cefe5c183adb498cc65/raw/f2eec6d2cb89f5d779e16b28ed0dab89d738ba96/sample.csv');
+    const response = await axios.get(url);
     res.send(response.data);
   } catch (error) {
     console.error('Error fetching CSV data:', error);
